@@ -1,0 +1,14 @@
+DOCKERUSER?=sigsci
+DOCKERNAME?=sigsci-nginx-alpine
+DOCKERTAG?=latest
+SIGSCI_ACCESSKEY?=SETME
+SIGSCI_SECRETKEY?=SETME
+
+build:
+	docker build -t $(DOCKERUSER)/$(DOCKERNAME):$(DOCKERTAG) .
+
+build-no-cache:
+	docker build --no-cache -t $(DOCKERUSER)/$(DOCKERNAME):$(DOCKERTAG) .
+
+run:
+	docker run --name $(DOCKERNAME) -d -e SIGSCI_ACCESSKEYID="$(SIGSCI_ACCESSKEY)" -e SIGSCI_SECRETACCESSKEY="$(SIGSCI_SECRETKEY)" -p 8080:80 $(DOCKERUSER)/$(DOCKERNAME):$(DOCKERTAG)
