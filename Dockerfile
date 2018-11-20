@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 #Install nginx (w/ LuaJIT) and tools
-RUN apk add --no-cache curl nginx-mod-http-lua
+RUN pacman -Syu --no-cache curl nginx-mainline-mod-lua
 RUN mkdir -p /run/nginx
 COPY /contrib/default.conf /etc/nginx/conf.d/default.conf
 
