@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM mtorromeo:latest
 
 #Install nginx (w/ LuaJIT) and tools
 RUN pacman -Syu --no-cache curl nginx-mainline-mod-lua
